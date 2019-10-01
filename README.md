@@ -7,6 +7,8 @@ ACMEのDNS認証用に作ったやつです．
 APIがないネームサーバを使っている場合に_acme-challengeのNSレコードを適当なホストに向けておいて，そこで起動する想定．
 (dns_tmpdns.sh がacme.shから使えます)
 
+Dockerビルド。ACMへインストールを追加。
+
 # Usage
 
 ```shell
