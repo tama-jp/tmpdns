@@ -9,34 +9,19 @@ APIがないネームサーバを使っている場合に_acme-challengeのNSレ
 
 Dockerビルド。ACMへインストールを追加。
 
-# Usage
+# install
 
-```shell
-go get -d
-CGO_ENABLED=0 go build
-./tmpdns -p 53 "hoge.example.com.:txt:hello! world" "fuga.example.com.:a:192.168.0.1"
-./tmpdns -p 53 -z example.com. "hoge:txt:hello" "fuga:a:192.168.0.1"
 ```
-(FQDNを示す `.` の書き忘れに注意)
-
-## Docker image
-
-```shell
-dokcer pull binzume/tmpdns
-docker run --rm -p 53:53/udp --name tmpdns binzume/tmpdns -z example.com. "hoge:txt:hello" "fuga:a:192.168.0.1"
+git clone https://github.com/tama-jp/tmpdns.git
+cd ./tmpdns
+sh install.sh
 ```
 
-query sample:
+# 証明書を取得する
 
-```shell
-dig fuga.example.com @localhost  # 192.168.0.1
-dig txt hoge.example.com @localhost  # "hello"
 ```
-
-## Flags
-
-- -p: port (default:53)
-- -z: zone (default:.)
+acme.sh --issue --dnssleep 60 --dns dns_tmpdns -d example.jp 
+```
 
 # License
 
