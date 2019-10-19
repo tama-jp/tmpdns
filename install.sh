@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 #イメージ作成
+cp -p dns.go tmpdns/ns.go
 cd tmpdns
 docker build . -t tmpdns
 cd ..
