@@ -18,7 +18,7 @@ RUN tar -C /opt -xzf go${go_ver}.linux-amd64.tar.gz && \
 
 WORKDIR /work
 
-ADD ../dns.go ./dns.go
+ADD dns.go ./dns.go
 RUN go get -d
 RUN go build -o tmpdns
 
