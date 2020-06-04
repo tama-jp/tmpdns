@@ -20,7 +20,8 @@ WORKDIR /work
 
 ADD dns.go ./dns.go
 RUN go get -d
-RUN go build -o tmpdns
+#RUN go build -o tmpdns
+RUN GOCACHE=/go/.cache CGO_ENABLED=0 go build -o tmpdns -ldflags='-s -w'
 
 FROM centos:centos7
 
