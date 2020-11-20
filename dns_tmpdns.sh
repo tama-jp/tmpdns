@@ -9,7 +9,7 @@ dns_tmpdns_add() {
   _debug "docker run"
 
   echo "set docker env"
-  exists=`docker inspect -f '{{.Config.Cmd}}' tmpdns | awk '{print substr($0, 3,length($0)-4)}'` || true
+  exists=`docker inspect -f '{{.Config.Cmd}}' tmpdns | sed 's/^{\?\[\|\]}\?$//g'` || true
   echo "rm docker container"
   docker rm -f tmpdns || true
   echo "docker run"
